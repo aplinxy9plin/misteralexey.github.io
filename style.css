@@ -1,0 +1,49 @@
+body {
+	background-color: black;
+	color: white;
+}
+h1 {
+	margin: 0%
+}
+img {
+	width: 150%;
+}
+.container {
+	margin: 10%;
+	margin-top: 17%;
+	display: flex;
+}
+.left_chapter {
+	width: 49%;
+	text-align: center;
+}
+.right_chapter {
+	width: 49%;
+	text-align: center;
+}
+.task {
+	display: flex;	
+	border: 2px solid white;
+
+}
+.left_task {
+	background-color: blue;
+	width: 30%;
+}
+.rigth_task {
+	width: 70%;
+	text-align: center;
+}
+.weather {
+	display: flex;
+
+}
+.temp {
+	width: 80%;
+}
+.sun {
+	width: 20%;
+}
+.left_chapter h1, .weather h1 {
+	font-size: 5em;
+}
