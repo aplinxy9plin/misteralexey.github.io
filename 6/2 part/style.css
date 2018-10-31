@@ -1,0 +1,25 @@
+body {
+	background-color: black;
+	color: white; 
+}
+.top_panel {
+	width: 100%;
+	height: 5%;
+	display: flex;
+}
+.images {
+	display: flex;
+}
+.small_images {
+	width: 50%;
+	height: 30%;
+}
+.date {
+	width: 30%;
+	height: 30%;
+	text-align: center;
+	line-height: 0;
+}
+.news {
+	width: 30%;
+}
