@@ -1,0 +1,27 @@
+a {
+	color: blue;
+}
+a:visited {
+	color: #FF00FF;
+}
+a:hover {
+	color: blue;
+}
+a:hover + .my_div {
+	display: block;
+}
+a:active {
+	color: green;
+}
+.my_div {
+		background-color: yellow;
+	}
+.my_div:active {
+	color: red;
+}
+.my_div:hover {
+	color: #FF00FF;
+}
+a:hover+ .my_div {
+	color: blue;
+}
