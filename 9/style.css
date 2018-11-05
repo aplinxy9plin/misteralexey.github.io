@@ -1,0 +1,12 @@
+img {
+	height: 100%;
+	width: 33%;
+}
+.user {
+	height: 200px;
+	padding: 4%;
+	display: flex;
+}
+.bot_img {
+	height: 200px;
+}
