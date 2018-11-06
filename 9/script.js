@@ -1,17 +1,37 @@
-//for (var i = 1; i <= 15; i++) {
-//	console.log(i)
-//}
-//var z = 2;
-//for (var i = 1; i < 5; i++) {
-//	console.log (z)
-//	z *= 2
-//}
-function rand() {
+function rand(){
 	var max = 3, min = 0;
-	var chislo = Math.floor(Math.random() * (max- min)) + min 
+	var chislo = Math.floor(Math.random() * (max - min)) + min
 	return chislo
 }
 
-function game(user) {
-	
+function game(user){
+
+        if (user === chislo) {
+            alert ("The result is a tie!")
+        }
+        else if(user === "0") {
+            if(chislo === "1") {
+                alert ("rock wins")
+            }
+            else {
+                alert ("paper wins")
+            }
+        }
+        else if(user === "2") {
+            if(chislo === "0") {
+                alert ("paper wins")
+            }
+            else {
+                alert ("scissors wins")
+            }
+        }
+        else if(user === "1") {
+            if(chislo === "2") {
+                alert ("scissors wins")
+            }
+            else {
+                alert ("rock wins")
+            }
+        }
+      alert(compare(0,1))
 }
