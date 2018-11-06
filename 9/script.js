@@ -5,7 +5,7 @@ function rand(){
 }
 
 function game(user){
-
+	var chislo = rand()
         if (user === chislo) {
             alert ("The result is a tie!")
         }
@@ -33,5 +33,4 @@ function game(user){
                 alert ("rock wins")
             }
         }
-      alert(compare(0,1))
 }
