@@ -8,6 +8,12 @@
 <body>
 	<h1>Choose your weapon</h1>
 	<br>
+	<div>Ты победил (сколько раз) - </div>
+	<div id="wins">0</div>
+	<div>Ты проиграл (сколько раз) - </div>
+	<div id="looses">0</div>
+	<div>Ничья (сколько раз) - </div>
+	<div id="tie">0</div>
 	<div class="user">
 	<img src="kam.png" onclick="game(0)" >
 	<img src="nozh.png" onclick="game(1)" >
@@ -15,7 +21,7 @@
 	</div>
 	<hr>
 	<center>
-	<img src="bum.png" class="bot_img">
+	<img src="bum.png" class="bot_img" id="comp_pic">
 	</center>
 </body>
 </html>
