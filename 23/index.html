@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<input 
+			type="text" 
+			class="col-3 form-control"
+			id="inp"
+			onkeyup="check(this.value)"
+			data-html="true"
+			data-placement="bottom"
+			data-toggle="popover"
+			data-content="
+						<button onclick='change()'>Изменить</button>
+						<button onclick='cancel()'>Отмена</button>
+			">
+			<button class="btn btn-lg btn-success" type="button" onclick="clear()">Send</button>
+			<br>
+			<button class="btn btn-lg btn-success" type="button" onclick="show()">Show</button>
+			<br>
+<table class="table" id="tbody">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+    </tr>
+   <tbody></tbody>
+</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function show() {
+		$('#inp').popover('toggle')
+		}
+		function cancel() {
+		$('#inp').popover('hide')
+		}
+		var words = [
+		{
+			bad: 'Пидор',
+			good: 'Гомосексуалист'
+		},
+		{
+			bad: "Блядина",
+			good: "Женщина с низкой социальной ответственностью"
+		},
+		{
+			bad: 'Хуесоска',
+			good: 'Минетчица'
+		}
+		]
+		var bad_word, good_word;
+		function check(value) {
+			for (var i = 0; i < words.length; i++) {
+				if (value.indexOf(words[i].bad) !==-1) {
+					console.log(value.indexOf(words[i].bad));
+					$('#inp').popover('toggle')
+					bad_word = words[i].bad
+					good_word = words[i].good
+				}
+			}
+		}
+		function change() {
+			var value = $('#inp').val()
+			
+			console.log(value);
+			$('#inp').val(value.replace(bad_word, good_word))
+			$('#inp').popover('hide')
+		}
+	
+	$.get({
+	url: 'https://api.vk.com/method/friends.get',
+	method: 'GET',
+	dataType: 'jsonp',
+	success: (data) =>{
+		console.log(data)
+		for (var i = 0; i < data.response.items.length; i++) {
+		var tr = document.createElement('tr')
+		var id = document.createElement('td')
+		var first_name = document.createElement('td')
+        var last_name = document.createElement('td')
+        id.innerHTML = data.response.items[i].id
+        last_name.innerHTML = data.response.items[i].last_name
+        first_name.innerHTML = data.response.items[i].first_name
+        tr.appendChild(id)
+        tr.appendChild(first_name)
+        tr.appendChild(last_name)
+        document.getElementById('tbody').appendChild(tr)
+    }
+	}
+}, {
+	access_token: 'cd9a0e381fcef675ec9786a1d1a2224e1f73da3c1525a2e73a30a9ce83572a2ac0d1c9523f0da04615e5c',
+	v: 5.37,
+	fields: 'domain'
+})
+	</script>
+
+
+
+
+
+<!-- access_token=cd9a0e381fcef675ec9786a1d1a2224e1f73da3c1525a2e73a30a9ce83572a2ac0d1c9523f0da04615e5c -->
+<!-- https://oauth.vk.com/authorize?client_id=6812614&scope=messages,friends,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token&v=5.37 -->
+
+<!-- http://api.vk.com/method/users.get -->
+
+
+</body>
+</html>
