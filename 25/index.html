@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>To do it List</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+	<div id="list">
+		
+	</div>
+	<div class="row pt-3">
+		<button class="btn btn-lg btn-success" onclick="add()">Добавить заметку</button>
+	</div>	
+</div>
+
+<script type="text/javascript">
+	if (localStorage.getItem('qwe') != null) {
+		var tmp = localStorage.getItem('qwe')
+		var data = tmp.split(',')
+		for (var i = 0; i < data.length; i++) {
+			var new_note = $(`
+			<div class="row col-5">
+				<div class="form-group d-inline-flex">
+						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()">`+data[i]+`</textarea>
+						<button type="button" class="close col-2" aria-label="Close" onclick="close()">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+			</div>
+			<br>
+			`)
+		$('#list').append(new_note)
+
+		}
+	}
+	function saveData () {
+		var arr = [];
+		for (var i = 0; i< $('.form-group').length; i++) {
+			if ($('textarea')[i].value !== ``) {
+				var obj =  $('textarea')[i].value
+				arr.push(obj)
+			}
+			if (i== $('.form-group').length-1) {
+				localStorage.setItem('qwe', arr)
+			}
+		}
+	}
+	function add() {
+		var new_note = $(`
+			<div class="row col-5">
+				<div class="form-group d-inline-flex">
+						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()"></textarea>
+						<button type="button" class="close col-2" aria-label="Close" onclick="close()">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+			</div>
+			<br>
+			`)
+		$('#list').append(new_note)
+	}
+	function close() {
+
+	}
+
+
+</script>
+</body>
+</html>
