@@ -69,10 +69,9 @@
 		$('#list').append(new_note)
 	}
 	function close() {
-		for (var i = 0; i< json.length; i++) {
-			qwe.splice(i, 1)
+		localStorage.removeItem('qwe')
+		console.log(`123`)
 	}
-}
 </script>
 </body>
 </html>
