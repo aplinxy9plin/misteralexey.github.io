@@ -29,7 +29,7 @@
 			<div class="row col-5">
 				<div class="form-group d-inline-flex">
 						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()">`+json[i].text+`</textarea>
-						<button type="button" class="close col-2" aria-label="Close" onclick="close()">
+						<button type="button" class="close col-2" aria-label="Close" onclick="del()">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 				</div>
@@ -59,7 +59,7 @@
 			<div class="row col-5">
 				<div class="form-group d-inline-flex">
 						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()"></textarea>
-						<button type="button" class="close col-2" aria-label="Close" onclick="close()">
+						<button type="button" class="close col-2" aria-label="Close" onclick="del()">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 				</div>
@@ -68,9 +68,10 @@
 			`)
 		$('#list').append(new_note)
 	}
-	function close() {
-		localStorage.removeItem('qwe')
-		console.log(`123`)
+	function del() {
+		var asd = JSON.parse(localStorage.getItem('qwe')); 
+			asd.splice(1, 1)
+		console.log(asd)	
 	}
 </script>
 </body>
