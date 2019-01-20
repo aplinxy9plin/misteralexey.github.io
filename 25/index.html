@@ -21,13 +21,14 @@
 
 <script type="text/javascript">
 	if (localStorage.getItem('qwe') != null) {
-		var tmp = localStorage.getItem('qwe')
-		var data = tmp.split(',')
-		for (var i = 0; i < data.length; i++) {
+		// var tmp = localStorage.getItem('qwe')
+		// var data = tmp.split(',')
+		var json = JSON.parse(localStorage.getItem('qwe'))
+		for (var i = 0; i < json.length; i++) {
 			var new_note = $(`
 			<div class="row col-5">
 				<div class="form-group d-inline-flex">
-						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()">`+data[i]+`</textarea>
+						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()">`+json[i].text+`</textarea>
 						<button type="button" class="close col-2" aria-label="Close" onclick="close()">
 						  <span aria-hidden="true">&times;</span>
 						</button>
@@ -36,18 +37,20 @@
 			<br>
 			`)
 		$('#list').append(new_note)
-
 		}
 	}
 	function saveData () {
 		var arr = [];
 		for (var i = 0; i< $('.form-group').length; i++) {
 			if ($('textarea')[i].value !== ``) {
-				var obj =  $('textarea')[i].value
+				var obj =  {
+				text: $('textarea')[i].value
+				}
 				arr.push(obj)
 			}
 			if (i== $('.form-group').length-1) {
-				localStorage.setItem('qwe', arr)
+				var string = JSON.stringify(arr)
+				localStorage.setItem('qwe', string)
 			}
 		}
 	}
@@ -66,10 +69,10 @@
 		$('#list').append(new_note)
 	}
 	function close() {
-
+		for (var i = 0; i< json.length; i++) {
+			qwe.splice(i, 1)
 	}
-
-
+}
 </script>
 </body>
 </html>
