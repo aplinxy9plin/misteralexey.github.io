@@ -29,7 +29,7 @@
 			<div class="row col-5">
 				<div class="form-group d-inline-flex">
 						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()">`+json[i].text+`</textarea>
-						<button type="button" class="close col-2" aria-label="Close" onclick="del()">
+						<button type="button" class="close col-2" aria-label="Close" onclick="del(`+i+`)">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 				</div>
@@ -55,11 +55,18 @@
 		}
 	}
 	function add() {
-		var new_note = $(`
+		var count = 0;
+		for(var i = 0; i < $('form-group').length; i++){
+			if($('textarea').text !== ""){
+				// добавлять id
+				++count;
+			   }	
+			if(i == $('form-group').length-1){
+			   var new_note = $(`
 			<div class="row col-5">
 				<div class="form-group d-inline-flex">
 						<textarea class="form-control col-10" rows="2" id="comment" onchange="saveData()"></textarea>
-						<button type="button" class="close col-2" aria-label="Close" onclick="del()">
+						<button type="button" class="close col-2" aria-label="Close" onclick="del(`+count+`)">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 				</div>
@@ -67,11 +74,14 @@
 			<br>
 			`)
 		$('#list').append(new_note)
+			   }
+		}
 	}
-	function del() {
+	function del(id) {
 		var asd = JSON.parse(localStorage.getItem('qwe')); 
-			asd.splice(1, 1)
-		console.log(asd)	
+		asd.splice(id, 1)
+		localStorage.setItem('qwe', JSON.stringify(asd));
+		window.location.reload();	
 	}
 </script>
 </body>
