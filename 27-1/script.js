@@ -15,7 +15,7 @@
 		    }
  		 var index = [];
 		  for (var i = 0; i < data.response.items.length; i++) { 
-		  var name = data.response.items[i].first_name + " " + data.response.items[i].last_name.toLowerCase(),
+		  var name = data.response.items[i].first_name.toLowerCase() + " " + data.response.items[i].last_name.toLowerCase(),
 		        value = $('input').val()
 		    if(name.indexOf(value.toLowerCase()) == -1){
 		      index.push(i)
